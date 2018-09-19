@@ -4,7 +4,7 @@
 int main()
 {
 	cout << "First vector is" << endl;
-	vec3<int> v1 (1, 2, 3);
+	vec3<int> v1 (13, 2, 3);
 	v1.print;
 	cout << "First vector is" << endl;
 	vec3<int> v2(v1);
