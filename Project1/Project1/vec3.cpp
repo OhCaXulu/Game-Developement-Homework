@@ -4,10 +4,10 @@
 using namespace std;
 
 template <class temp>
-vec3<temp>::vec3(temp x, temp y, temp z) : x(x), y(y), z(z) {}
+vec3<temp>::vec3(temp& x, temp& y, temp& z) : x(x), y(y), z(z) {}
 
 template <class temp>
-vec3<temp>::vec3(const vec3& param)
+vec3<temp>::vec3(const vec3& param) //That's slow
 {
 	this->x = param.x;
 	this->y = param.y;
@@ -57,61 +57,61 @@ void vec3<temp>::print()
 }
 
 template<class temp>
-bool vec3<temp>::operator==(const vec3 & other) const
+bool vec3<temp>::operator==(const vec3& other) const
 {
 	return this->x == other.x && this->y == other.y && this->z == other.z;
 }
 
 template<class temp>
-bool vec3<temp>::operator!=(const vec3 & other) const
+bool vec3<temp>::operator!=(const vec3& other) const
 {
 	return this->x != other.x || this->y != other.y || this->z != other.z;
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator+(const vec3 & other)
+const vec3<temp> vec3<temp>::operator+(const vec3& other) const
 {
 	return vec3<temp>(x + other.x, y + other.y, z + other.z);
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator+(const temp val)
+const vec3<temp> vec3<temp>::operator+(const temp& val) const
 {
 	return vec3<temp>(x + val, y + val, z + val);
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator-(const vec3 & other)
+const vec3<temp> vec3<temp>::operator-(const vec3& other) const
 {
 	return vec3<temp>(x - other.x, y - other.y, z - other.z);
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator-(const temp val)
+const vec3<temp> vec3<temp>::operator-(const temp& val) const
 {
 	return vec3<temp>(x - val, y - val, z - val);
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator+=(const vec3 & other)
+const vec3<temp> vec3<temp>::operator+=(const vec3& other) const
 {
 	return vec3<temp>(x += other.x, y += other.y, z += other.z);
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator+=(const temp val)
+const vec3<temp> vec3<temp>::operator+=(const temp& val) const
 {
 	return vec3<temp>(x += val, y += val, z += val);
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator-=(const vec3 & other)
+const vec3<temp> vec3<temp>::operator-=(const vec3& other) const
 {
 	return vec3<temp>(x -= other.x, y -= other.y, z -= other.z);
 }
 
 template<class temp>
-const vec3<temp> vec3<temp>::operator-=(const temp val)
+const vec3<temp> vec3<temp>::operator-=(const temp& val) const
 {
 	return vec3<temp>(x -= val, y -= val, z -= val);
 }
@@ -133,9 +133,9 @@ void vec3<temp>::operator--()
 }
 
 template<class temp>
-temp vec3<temp>::normalize(temp x, temp y, temp z)
+temp vec3<temp>::normalize(temp& x, temp& y, temp& z)
 {
-	temp modul = sqrt(x ^ 2, y ^ 2, z ^ 2);
+	temp modul = sqrtf<temp>(x ^ 2, y ^ 2, z ^ 2);
 
 	return vec3<temp>(x/modul, y/modul, z/modul);
 }
@@ -155,6 +155,6 @@ bool vec3<temp>::is_zero()
 template<class temp>
 temp vec3<temp>::distance_to(const vec3 & other)
 {
-	temp distance = sqrt((other.x - this->x) ^ 2 + (other.y - this->y) ^ 2 + (other.z - this->z));
+	temp distance = sqrtf<temp>((other.x - this->x) ^ 2 + (other.y - this->y) ^ 2 + (other.z - this->z));
 	return distance;
 }
