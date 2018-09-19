@@ -78,6 +78,8 @@ private:
 
 	// TODO 2: Create two new variables from pugui namespace:
 	// a xml_document to store the while config file and
+	std::string xml_file_path = "C:\Users\W10\Documents\GitHub\Game-Developement-Homework\Dev_class2_handout\Game";
+	pugi::xml_document Config;
 	// a xml_node to read specific branches of the xml
 
 	int					argc;
