@@ -8,10 +8,46 @@
 
 // TODO 2: Create a struct to hold information for a TileSet
 // Ignore Terrain Types and Tile Types for now, but we want the image!
+struct tileset
+{
+	char* name;
+	uint tilewidth = 32;
+	uint tileheight = 32;
+	uint spacing = 1;
+	uint margin = 1;
+};
 // ----------------------------------------------------
 
 
 // TODO 1: Create a struct needed to hold the information to Map node
+
+struct map
+{
+	enum orientationType
+	{
+		NOTSPECIFIED_ORIENTATION,
+		ORTHOGONAL,
+		ISOMETRIC,
+		HEXAGONAL,
+	};
+
+	enum renderorderType
+	{
+		NOTSPECIFIED_RENDERORDER,
+		RIGHTDOWN,
+		LEFTDOWN,
+		RIGHTUP,
+		LEFTUP,
+	};
+
+	orientationType orientation = NOTSPECIFIED_ORIENTATION;
+	renderorderType orientation = NOTSPECIFIED_RENDERORDER;
+
+	uint width;
+	uint height;
+	uint tilewidth;
+	uint tileheight;
+};
 
 
 // ----------------------------------------------------
@@ -42,6 +78,7 @@ private:
 public:
 
 	// TODO 1: Add your struct for map info as public for now
+	map Hello;
 
 private:
 

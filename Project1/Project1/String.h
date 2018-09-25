@@ -5,16 +5,24 @@
 
 using namespace std;
 
-class string
+class myString
 {
 private:
+	char* data;
+	unsigned int lenght;
 	
 
 public:
 	//Constructors
-	
+	myString() {};
+
+	myString(const char* characters) {}
+
 	//Destructor
+	~myString() {}
+
 	
+
 
 	//Modifiers
 	

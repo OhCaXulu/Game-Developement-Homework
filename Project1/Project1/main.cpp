@@ -4,13 +4,15 @@
 
 int main()
 {
-	cout << "First vector is" << endl;
+	/*cout << "First vector is" << endl;
 	vec3<int> v1 (13, 2, 3);
 	v1.print;
 	cout << "First vector is" << endl;
 	vec3<int> v2(v1);
 	v2.operator+(2);
-	v2.print;
+	v2.print;*/
+
+	myString str("Hola pepsicola");
 
 }
 
