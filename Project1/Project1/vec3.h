@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef _VEC_H_
-#define _VEC_H_
+#ifndef _VEC3_H_
+#define _VEC3_H_
 
 using namespace std;
 
