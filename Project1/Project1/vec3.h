@@ -78,7 +78,6 @@ public:
 	{
 		return vec3<temp>(x + other.x, y + other.y, z + other.z);
 	}
-
 	const vec3<temp>operator +(const temp& val)const 
 	{
 		return vec3<temp>(x + val, y + val, z + val);
@@ -95,17 +94,14 @@ public:
 	{
 		return vec3<temp>(x += other.x, y += other.y, z += other.z);
 	}
-
 	const vec3<temp>operator +=(const temp& val)const 
 	{
 		return vec3<temp>(x += val, y += val, z += val);
 	}
-
 	const vec3<temp>operator -=(const vec3& other)const
 	{
 		return vec3<temp>(x -= other.x, y -= other.y, z -= other.z);
 	}
-
 	const vec3<temp>operator -=(const temp& val)const
 	{
 		return vec3<temp>(x -= val, y -= val, z -= val);
@@ -119,9 +115,9 @@ public:
 		return vec3<temp>(x / modul, y / modul, z / modul);
 	}
 
-	vec3 <temp> zero() 
+	void zero() 
 	{
-		return vec3<temp>(x = 0, y = 0, z = 0);
+		x = y = z = 0<temp>;
 	}
 
 	bool is_zero() 
