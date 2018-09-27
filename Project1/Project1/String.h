@@ -8,9 +8,8 @@ using namespace std;
 class myString
 {
 private:
-	char* data;
-	unsigned int lenght;
-	
+	char* str = nullptr;
+	unsigned int mem_allocated;
 
 public:
 	//Constructors
