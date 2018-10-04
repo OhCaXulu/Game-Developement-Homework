@@ -38,22 +38,40 @@ void j1Map::Draw()
 	// TODO 10(old): Complete the draw function
 }
 
-iPoint j1Map::MapToWorld(int x, int y) const
+iPoint j1Map::MapToWorld(int x, int y) const // To get the X, Y pixel
 {
 	iPoint ret(0,0);
 	// TODO 8(old): Create a method that translates x,y coordinates from map positions to world positions
-
+	if (data.type == MAPTYPE_ORTHOGONAL)
+	{
+		ret.x = x * data.tile_width;
+		ret.y = y * data.tile_height;
+	}
 	// TODO 1: Add isometric map to world coordinates
+	if (data.type == MAPTYPE_ISOMETRIC)
+	{
+		ret.x = (x - y) * (data.tile_width * 0.5f); //ret.x = x * (data.tile_width * 0.5f) - y * (data.tile_width * 0.5f);
+		ret.y = (x + y) * (data.tile_height * 0.5f);
+	}
 	return ret;
 }
 
 
-iPoint j1Map::WorldToMap(int x, int y) const
+iPoint j1Map::WorldToMap(int x, int y) const // To get the X, Y tiles
 {
 	iPoint ret(0,0);
 	// TODO 2: Add orthographic world to map coordinates
-
+	if (data.type == MAPTYPE_ORTHOGONAL)
+	{
+		ret.x = x / data.tile_width;
+		ret.y = y / data.tile_height;
+	}
 	// TODO 3: Add the case for isometric maps to WorldToMap
+	if (data.type == MAPTYPE_ISOMETRIC)
+	{
+		ret.x = (	(x / (data.tile_width * 0.5f))	+	(y / (data.tile_height * 0.5f))		) * 0.5f;
+		ret.y = (	(x / (data.tile_height * 0.5f)) -	(y / (data.tile_width * 0.5f))		) * 0.5f;
+	}
 	return ret;
 }
 
