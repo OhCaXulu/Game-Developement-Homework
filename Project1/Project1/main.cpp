@@ -12,7 +12,7 @@ int main()
 	v2.operator+(2);
 	v2.print;*/
 
-	myString str("Hola pepsicola");
+	/*String str("Hola pepsicola");*/
 
 }
 

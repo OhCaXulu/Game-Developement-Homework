@@ -1,0 +1,13 @@
+﻿  Main.cpp
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\vec3.h(120): error C2760: syntax error: unexpected token ';', expected 'expression'
+  c:\users\polbm\documents\github\game-developement-homework\project1\project1\vec3.h(135): note: see reference to class template instantiation 'vec3<temp>' being compiled
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\string.h(24): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(338): note: see declaration of 'strncpy'
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\string.h(34): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(338): note: see declaration of 'strncpy'
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\string.h(74): error C3867: 'String::length': non-standard syntax; use '&' to create a pointer to member
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\string.h(80): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\string.h(338): note: see declaration of 'strncpy'
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\main.cpp(15): error C2065: 'myString': undeclared identifier
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\main.cpp(15): error C2146: syntax error: missing ';' before identifier 'str'
+c:\users\polbm\documents\github\game-developement-homework\project1\project1\main.cpp(15): error C3861: 'str': identifier not found

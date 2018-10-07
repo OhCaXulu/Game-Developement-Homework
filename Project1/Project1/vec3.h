@@ -115,10 +115,10 @@ public:
 		return vec3<temp>(x / modul, y / modul, z / modul);
 	}
 
-	void zero() 
+	/*void zero() 
 	{
 		x = y = z = 0<temp>;
-	}
+	}*/
 
 	bool is_zero() 
 	{
