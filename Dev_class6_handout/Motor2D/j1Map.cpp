@@ -35,6 +35,24 @@ void j1Map::Draw()
 	MapLayer* layer = data.layers.start->data; // for now we just use the first layer and tileset
 	TileSet* tileset = data.tilesets.start->data;
 
+	for (int i = 0; i < data.tilesets.count(); i++)
+	{
+		for (uint j = 0; j < data.layers.count(); j++)
+		{
+			for (uint rows = 0; rows < data.height; rows++)
+			{
+				for (uint columns = 0; columns < data.width; columns++)
+				{
+					iPoint pos = MapToWorld(columns, rows);
+
+					App->render->Blit(data.tilesets[i]->texture,    //texture 
+						pos.x, pos.y,                    //position.x / position.y of tile
+						&data.tilesets[i]->GetTileRect(data.layers[j]->data[data.layers[j]->Get(columns, rows)])); //rectangle
+				}
+			}
+		}
+	}
+
 	// TODO 10(old): Complete the draw function
 }
 
@@ -78,7 +96,15 @@ iPoint j1Map::WorldToMap(int x, int y) const // To get the X, Y tiles
 SDL_Rect TileSet::GetTileRect(int id) const
 {
 	SDL_Rect rect = {0, 0, 0, 0};
+
 	// TODO 7(old): Create a method that receives a tile id and returns it's Rect
+	int relative_id = id - firstgid;
+
+	rect.w = tile_width;
+	rect.h = tile_height;
+
+	rect.x = margin + ((rect.w + spacing) * (relative_id % num_tiles_width));
+	rect.y = margin + ((rect.h + spacing) * (relative_id / num_tiles_width));
 	return rect;
 }
 

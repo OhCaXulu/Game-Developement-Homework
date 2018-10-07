@@ -1,13 +1,27 @@
-﻿  j1Main.cpp
-  j1App.cpp
-  j1Audio.cpp
-  j1Input.cpp
-  j1Map.cpp
+﻿  j1Map.cpp
+c:\users\w10\documents\github\game-developement-homework\dev_class6_handout\motor2d\j1map.cpp(38): warning C4018: '<': no coinciden signed/unsigned
+c:\users\w10\documents\github\game-developement-homework\dev_class6_handout\motor2d\j1map.cpp(42): warning C4018: '<': no coinciden signed/unsigned
+c:\users\w10\documents\github\game-developement-homework\dev_class6_handout\motor2d\j1map.cpp(44): warning C4018: '<': no coinciden signed/unsigned
+c:\users\w10\documents\github\game-developement-homework\dev_class6_handout\motor2d\j1map.cpp(71): warning C4244: '=': conversión de 'float' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
+c:\users\w10\documents\github\game-developement-homework\dev_class6_handout\motor2d\j1map.cpp(72): warning C4244: '=': conversión de 'float' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
+c:\users\w10\documents\github\game-developement-homework\dev_class6_handout\motor2d\j1map.cpp(90): warning C4244: '=': conversión de 'float' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
+c:\users\w10\documents\github\game-developement-homework\dev_class6_handout\motor2d\j1map.cpp(91): warning C4244: '=': conversión de 'float' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
   j1Scene.cpp
-  p2Log.cpp
-  j1Render.cpp
-  j1Textures.cpp
-  j1Window.cpp
-  pugixml.cpp
-  Generating Code...
-  Motor2D.vcxproj -> C:\Users\polbm\Documents\GitHub\Game-Developement-Homework\Dev_class6_handout\Debug\Development - Class 6.exe
+  Generando código...
+  Motor2D.vcxproj -> C:\Users\W10\Documents\GitHub\Game-Developement-Homework\Dev_class6_handout\Debug\Development - Class 6.exe
