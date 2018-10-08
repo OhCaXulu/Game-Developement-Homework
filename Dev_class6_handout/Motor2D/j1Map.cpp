@@ -28,31 +28,36 @@ bool j1Map::Awake(pugi::xml_node& config)
 
 void j1Map::Draw()
 {
-	if(map_loaded == false)
-		return;
-
-	// TODO 5(old): Prepare the loop to draw all tilesets + Blit
-	MapLayer* layer = data.layers.start->data; // for now we just use the first layer and tileset
-	TileSet* tileset = data.tilesets.start->data;
-
-	for (int i = 0; i < data.tilesets.count(); i++)
+	if (map_loaded == false)
 	{
-		for (uint j = 0; j < data.layers.count(); j++)
-		{
-			for (uint rows = 0; rows < data.height; rows++)
-			{
-				for (uint columns = 0; columns < data.width; columns++)
-				{
-					iPoint pos = MapToWorld(columns, rows);
-
-					App->render->Blit(data.tilesets[i]->texture,    //texture 
-						pos.x, pos.y,                    //position.x / position.y of tile
-						&data.tilesets[i]->GetTileRect(data.layers[j]->data[data.layers[j]->Get(columns, rows)])); //rectangle
-				}
-			}
-		}
+		return;
 	}
 
+	p2List_item<MapLayer*>* layer; //Map
+	layer = data.layers.start;
+
+	p2List_item<TileSet*>* item; //Sprites_Layer
+
+	while (layer != nullptr) {
+		item = data.tilesets.start;
+		while (item != nullptr) {
+			for (int y = 0; y < data.height; ++y) {
+				for (int x = 0; x < data.width; ++x) {
+					uint id = layer->data->Get(x, y);
+
+					id = layer->data->data[id];
+
+					if (id != 0) {
+						SDL_Rect *rect = &item->data->GetTileRect(id);
+						iPoint pos = MapToWorld(x, y);
+						App->render->Blit(item->data->texture, pos.x, pos.y, rect);
+					}
+				}
+			};
+			item = item->next;
+		}
+		layer = layer->next;
+	}
 	// TODO 10(old): Complete the draw function
 }
 
