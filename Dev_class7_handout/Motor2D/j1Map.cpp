@@ -66,12 +66,9 @@ TileSet* j1Map::GetTilesetFromTileId(int id) const
 
 	for (int i = 0; i < data.tilesets.count()-1; ++i)
 	{
-		if (data.tilesets[i+1] != nullptr)
+		if (data.tilesets[i + 1]->firstgid > id)
 		{
-			if (data.tilesets[i + 1]->firstgid > id)
-			{
-				return data.tilesets[i];
-			}
+			return data.tilesets[i];
 		}
 	}
 
