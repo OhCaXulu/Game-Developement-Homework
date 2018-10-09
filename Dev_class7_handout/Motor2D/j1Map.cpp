@@ -32,26 +32,31 @@ void j1Map::Draw()
 		return;
 
 	// TODO 4: Make sure we draw all the layers and not just the first one
-	MapLayer* layer = this->data.layers.start->data;
+	MapLayer* layer;// = this->data.layers.start->data;
 
-	for(int y = 0; y < data.height; ++y)
+	for (int i = 0; i < data.tilesets.count(); ++i)
 	{
-		for(int x = 0; x < data.width; ++x)
+		layer = data.layers[i];
+		for (int y = 0; y < data.height; ++y)
 		{
-			int tile_id = layer->Get(x, y);
-			if(tile_id > 0)
+			for (int x = 0; x < data.width; ++x)
 			{
-				TileSet* tileset = GetTilesetFromTileId(tile_id);
-				if (tileset != nullptr)
+				int tile_id = layer->Get(x, y);
+				if (tile_id > 0)
 				{
-					SDL_Rect r = tileset->GetTileRect(tile_id);
-					iPoint pos = MapToWorld(x, y);
+					TileSet* tileset = GetTilesetFromTileId(tile_id);
+					if (tileset != nullptr)
+					{
+						SDL_Rect r = tileset->GetTileRect(tile_id);
+						iPoint pos = MapToWorld(x, y);
 
-					App->render->Blit(tileset->texture, pos.x, pos.y, &r);
+						App->render->Blit(tileset->texture, pos.x, pos.y, &r);
+					}
 				}
 			}
 		}
 	}
+	
 }
 
 TileSet* j1Map::GetTilesetFromTileId(int id) const
@@ -59,7 +64,18 @@ TileSet* j1Map::GetTilesetFromTileId(int id) const
 	// TODO 3: Complete this method so we pick the right
 	// Tileset based on a tile id
 
-	return data.tilesets.start->data;
+	for (int i = 0; i < data.tilesets.count()-1; ++i)
+	{
+		if (data.tilesets[i+1] != nullptr)
+		{
+			if (data.tilesets[i + 1]->firstgid > id)
+			{
+				return data.tilesets[i];
+			}
+		}
+	}
+
+	return data.tilesets.end->data;
 }
 
 iPoint j1Map::MapToWorld(int x, int y) const
