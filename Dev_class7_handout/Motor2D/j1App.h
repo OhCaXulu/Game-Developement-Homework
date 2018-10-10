@@ -70,8 +70,8 @@ private:
 	bool PostUpdate();
 
 	// Load / Save
-	bool LoadGameNow();
-	bool SavegameNow() const;
+	bool LoadGameNow(const char* file_name);
+	bool SavegameNow(const char* file_name) const;
 
 public:
 

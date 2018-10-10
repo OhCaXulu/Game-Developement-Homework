@@ -1,6 +1,2 @@
-﻿  j1Map.cpp
-c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout\motor2d\j1map.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout\motor2d\j1map.cpp(67): warning C4018: '<': signed/unsigned mismatch
-c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout\motor2d\j1map.cpp(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout\motor2d\j1map.cpp(93): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  j1App.cpp
   Motor2D.vcxproj -> C:\Users\polbm\Documents\GitHub\Game-Developement-Homework\Dev_class7_handout\Debug\Development - Class 7.exe

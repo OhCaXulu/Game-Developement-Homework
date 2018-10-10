@@ -157,10 +157,10 @@ void j1App::PrepareUpdate()
 void j1App::FinishUpdate()
 {
 	if(want_to_save == true)
-		SavegameNow();
+		SavegameNow("game_saved.xml");
 
 	if(want_to_load == true)
-		LoadGameNow();
+		LoadGameNow("game_saved.xml");
 }
 
 // Call modules before each loop iteration
@@ -296,18 +296,18 @@ void j1App::GetSaveGames(p2List<p2SString>& list_to_fill) const
 	// need to add functionality to file_system module for this to work
 }
 
-bool j1App::LoadGameNow()
+bool j1App::LoadGameNow(const char* file_name)
 {
 	bool ret = false;
 
 	pugi::xml_document data;
 	pugi::xml_node root;
 
-	pugi::xml_parse_result result = data.load_file(load_game.GetString());
+	pugi::xml_parse_result result = data.load_file(file_name);
 
 	if(result != NULL)
 	{
-		LOG("Loading new Game State from %s...", load_game.GetString());
+		LOG("Loading new Game State from %s...", file_name);
 
 		root = data.child("game_state");
 
@@ -327,17 +327,17 @@ bool j1App::LoadGameNow()
 			LOG("...loading process interrupted with error on module %s", (item != NULL) ? item->data->name.GetString() : "unknown");
 	}
 	else
-		LOG("Could not parse game state xml file %s. pugi error: %s", load_game.GetString(), result.description());
+		LOG("Could not parse game state xml file %s. pugi error: %s", file_name, result.description());
 
 	want_to_load = false;
 	return ret;
 }
 
-bool j1App::SavegameNow() const
+bool j1App::SavegameNow(const char* file_name) const
 {
 	bool ret = true;
 
-	LOG("Saving Game State to %s...", save_game.GetString());
+	LOG("Saving Game State to %s...", file_name);
 
 	// xml object were we will store all data
 	pugi::xml_document data;
@@ -356,11 +356,12 @@ bool j1App::SavegameNow() const
 	if(ret == true)
 	{
 		std::stringstream stream;
+		data.save_file(file_name);
 		data.save(stream);
 
 		// we are done, so write data to disk
 		//fs->Save(save_game.GetString(), stream.str().c_str(), stream.str().length());
-		LOG("... finished saving", save_game.GetString());
+		LOG("... finished saving", file_name);
 	}
 	else
 		LOG("Save process halted from an error in module %s", (item != NULL) ? item->data->name.GetString() : "unknown");
