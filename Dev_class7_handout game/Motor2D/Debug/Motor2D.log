@@ -1,0 +1,25 @@
+﻿  j1Main.cpp
+  j1App.cpp
+  j1Audio.cpp
+  j1Input.cpp
+  j1Map.cpp
+c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout game\motor2d\j1map.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout game\motor2d\j1map.cpp(67): warning C4018: '<': signed/unsigned mismatch
+c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout game\motor2d\j1map.cpp(89): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+c:\users\polbm\documents\github\game-developement-homework\dev_class7_handout game\motor2d\j1map.cpp(90): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  j1Scene.cpp
+  p2Log.cpp
+  j1Render.cpp
+  j1Textures.cpp
+  j1Window.cpp
+  pugixml.cpp
+  Generating Code...
+  Motor2D.vcxproj -> C:\Users\polbm\Documents\GitHub\Game-Developement-Homework\Dev_class7_handout game\Debug\Development - Class 7.exe
