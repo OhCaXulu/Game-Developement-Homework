@@ -157,10 +157,10 @@ void j1App::PrepareUpdate()
 void j1App::FinishUpdate()
 {
 	if(want_to_save == true)
-		SavegameNow("game_saved.xml");
+		SavegameNow("save_game.xml");
 
 	if(want_to_load == true)
-		LoadGameNow("game_saved.xml");
+		LoadGameNow("save_game.xml");
 }
 
 // Call modules before each loop iteration
