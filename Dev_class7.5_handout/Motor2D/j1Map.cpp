@@ -39,6 +39,19 @@ void j1Map::PropagateBFS()
 {
 	// TODO 1: If frontier queue contains elements
 	// pop the last one and calculate its 4 neighbors
+	iPoint first_tile;
+	iPoint neighbours[4];
+	p2List_item<iPoint>* iter;
+
+	while (frontier.Count() != 0)
+	{
+		frontier.Pop(first_tile);
+
+		neighbours[0] = { first_tile.x + 1,first_tile.y }; //right
+		neighbours[1] = { first_tile.x - 1,first_tile.y }; //left
+		neighbours[2] = { first_tile.x, first_tile.y + 1}; //up
+		neighbours[3] = { first_tile.x, first_tile.y - 1}; //down
+	}
 
 	// TODO 2: For each neighbor, if not visited, add it
 	// to the frontier queue and visited list
