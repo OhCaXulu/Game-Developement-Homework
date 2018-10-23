@@ -35,26 +35,62 @@ void j1Map::ResetBFS()
 	visited.add(iPoint(19, 4));
 }
 
-void j1Map::PropagateBFS()
+void j1Map::PropagateBFS(iPoint position)
 {
 	// TODO 1: If frontier queue contains elements
 	// pop the last one and calculate its 4 neighbors
-	iPoint first_tile;
-	iPoint neighbours[4];
-	p2List_item<iPoint>* iter;
-
-	while (frontier.Count() != 0)
+	if (frontier.start != nullptr) 
 	{
-		frontier.Pop(first_tile);
 
-		neighbours[0] = { first_tile.x + 1,first_tile.y }; //right
-		neighbours[1] = { first_tile.x - 1,first_tile.y }; //left
-		neighbours[2] = { first_tile.x, first_tile.y + 1}; //up
-		neighbours[3] = { first_tile.x, first_tile.y - 1}; //down
+		iPoint pos;
+		frontier.Pop(pos);
+		//visited.start->path_back = pos;
+
+		iPoint neighbourright = { pos.x + 1, pos.y };
+		iPoint neighbourleft = { pos.x - 1, pos.y }; 
+		iPoint neighbourup = { pos.x, pos.y + 1 }; 
+		iPoint neighbourdown = { pos.x, pos.y - 1 }; 
+
+		if (visited.end->data != position) 
+		{
+			if (visited.find(neighbourright) == -1 && IsWalkable(neighbourright.x, neighbourright.y)) 
+			{
+
+				visited.add(neighbourright);
+				frontier.Push(neighbourright);
+				visited.end->path_back = pos;
+				LOG("PATH BACK: X%i Y%i", visited.end->path_back.x, visited.end->path_back.y);
+			}
+
+			if (visited.find(neighbourleft) == -1 && IsWalkable(neighbourleft.x, neighbourleft.y)) 
+			{
+
+				visited.add(neighbourleft);
+				frontier.Push(neighbourleft);
+				visited.end->path_back = pos;
+				LOG("PATH BACK: X%i Y%i", visited.end->path_back.x, visited.end->path_back.y);
+			}
+
+			if (visited.find(neighbourup) == -1 && IsWalkable(neighbourup.x, neighbourup.y)) 
+			{
+
+				visited.add(neighbourup);
+				frontier.Push(neighbourup);
+				visited.end->path_back = pos;
+				LOG("PATH BACK: X%i Y%i", visited.end->path_back.x, visited.end->path_back.y);
+			}
+
+			if (visited.find(neighbourdown) == -1 && IsWalkable(neighbourdown.x, neighbourdown.y)) 
+			{
+
+				visited.add(neighbourdown);
+				frontier.Push(neighbourdown);
+				visited.end->path_back = pos;
+				LOG("PATH BACK: X%i Y%i", visited.end->path_back.x, visited.end->path_back.y);
+			}
+			// TODO 2: For each neighbor, if not visited, add it
+		}	// to the frontier queue and visited list
 	}
-
-	// TODO 2: For each neighbor, if not visited, add it
-	// to the frontier queue and visited list
 }
 
 void j1Map::DrawBFS()
@@ -95,7 +131,70 @@ bool j1Map::IsWalkable(int x, int y) const
 {
 	// TODO 3: return true only if x and y are within map limits
 	// and the tile is walkable (tile id 0 in the navigation layer)
-	return true;
+	MapLayer *aux = data.layers.start->next->data;
+	int tile_id = aux->Get(x, y);
+
+	return (x < data.width && y < data.height && x >= 0 && y >= 0 && tile_id == 0);
+
+	return false;
+}
+
+void j1Map::DrawPath(iPoint pos) 
+{
+
+	//int index = visited.find(pos);
+
+	//if (index != -1) {
+
+	//	p2List_item<iPoint>* item = visited.At(index);
+	//	p2Queue<iPoint> path;
+
+	//	if (item != nullptr)
+	//		path.Push(item->data);
+
+	//	while (item != nullptr && item != visited.start && path.start != nullptr) 
+	//	{
+
+	//		index = visited.find(item->path_back);
+	//		item->prev = visited.At(index);
+	//		path.Push(item->prev->data);
+
+	//		item = item->prev;
+	//	}
+
+	//	iPoint point;
+
+	//	for (uint i = 0; i < path.Count(); ++i) 
+	//	{
+
+	//		point = *(path.Peek(i));
+	//		TileSet* tileset = GetTilesetFromTileId(26);
+	//		SDL_Rect r = tileset->GetTileRect(26);
+	//		iPoint pos2 = MapToWorld(point.x, point.y);
+
+	//		App->render->Blit(tileset->texture, pos2.x, pos2.y, &r);
+	//	}
+	//}
+	///*iPoint position;
+
+	//if (item != nullptr) 
+	//{
+
+	//	while (item != visited.start) 
+	//	{
+
+	//		position = item->data;
+	//		TileSet* tileset = GetTilesetFromTileId(26);
+
+	//		SDL_Rect r = tileset->GetTileRect(26);
+	//		iPoint pos2 = MapToWorld(position.x, position.y);
+
+	//		App->render->Blit(tileset->texture, pos2.x, pos2.y, &r);
+
+	//		item->prev->data = item->path_back;
+	//		item = item->prev;
+	//	}
+	//}*/
 }
 
 void j1Map::Draw()
