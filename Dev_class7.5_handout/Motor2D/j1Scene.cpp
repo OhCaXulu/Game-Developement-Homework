@@ -66,10 +66,10 @@ bool j1Scene::Update(float dt)
 		App->map->ResetBFS();
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-		App->map->PropagateBFS();
+		App->map->PropagateBFS(iPoint(13, 23));
 
 	if (App->input->GetKey(SDL_SCANCODE_M) == KEY_REPEAT)
-		App->map->PropagateBFS();
+		App->map->PropagateBFS(iPoint(13, 23));
 
 	App->map->Draw();
 

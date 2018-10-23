@@ -124,11 +124,11 @@ public:
 	iPoint WorldToMap(int x, int y) const;
 
 	// BFS
-	void PropagateBFS();
+	void PropagateBFS(iPoint position);
 	void DrawBFS();
 	bool IsWalkable(int x, int y) const;
 	void ResetBFS();
-
+	void DrawPath(iPoint pos);
 private:
 
 	bool LoadMap();
