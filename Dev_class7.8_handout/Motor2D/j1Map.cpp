@@ -70,24 +70,38 @@ void j1Map::PropagateDijkstra()
 	// use the 2 dimensional array "cost_so_far" to track the accumulated costs
 	// on each cell (is already reset to 0 automatically)
 	iPoint curr;
+	uint new_cost;
 
 	if (frontier.Pop(curr))
 	{
+
 		iPoint neighbors[4];
 		neighbors[0].create(curr.x + 1, curr.y + 0);
 		neighbors[1].create(curr.x + 0, curr.y + 1);
 		neighbors[2].create(curr.x - 1, curr.y + 0);
 		neighbors[3].create(curr.x + 0, curr.y - 1);
 
-		for (uint i = 0; i < 4; ++i)
+		for (uint i = 0; i < 4; i++)
 		{
-			if (MovementCost(neighbors[i].x, neighbors[i].y) > 0)
+			//First we check if the movementcost exists or not, if it doesn't that means we didnt try to find a path, so we start doing so.
+			if (MovementCost(neighbors[i].x, neighbors[i].y) != -1) 
 			{
-				if (visited.find(neighbors[i]) == -1)
+				//new cost is basically the cost so far, which is the cost that has the tile you are currently in, + the movementcost of the neighbors.
+				new_cost = cost_so_far[curr.x][curr.y] + MovementCost(neighbors[i].x, neighbors[i].y); 
+				
+				//we check if the cost at the moment is 0 or if the new cost that we find by following another path is smaller than the one we found first.
+				if (cost_so_far[neighbors[i].x][neighbors[i].y] == 0 || new_cost < cost_so_far[neighbors[i].x][neighbors[i].y])
 				{
-					frontier.Push(neighbors[i], 0);
-					visited.add(neighbors[i]);
-					breadcrumbs.add(curr);
+					//if we didn't visit the tile
+					if (visited.find(neighbors[i]) == -1) 
+					{
+						frontier.Push(neighbors[i], new_cost); //we push the path that we found with the cost
+						visited.add(neighbors[i]);//Then we add the neigbors to the visited
+
+						breadcrumbs.add(curr); //actually putting the path, the X on the map
+
+						cost_so_far[neighbors[i].x][neighbors[i].y] = new_cost; //Finally we update the cost to the lowest we found
+					}
 				}
 			}
 		}
